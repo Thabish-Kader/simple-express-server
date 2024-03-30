@@ -1,22 +1,29 @@
 import express, { json } from "express";
 import cors from "cors";
-import {
-  errorHandler,
-  notFoundHandler,
-} from "./middleware/errorHandlerMiddleware";
+import { errorHandler } from "./middleware/errorHandlerMiddleware";
 const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
 app.use(json());
 
+app.get("/", (req, res) => {
+  console.log(req.url);
+  res.status(200).json({
+    message: "GET request received in '/' ",
+  });
+});
+
 app.get("/api", (req, res) => {
+  console.log(req.url);
+
   res.status(200).json({
     message: "GET request received",
   });
 });
 
 app.get("/api/getall", (req, res) => {
+  console.log(req.url);
   res.status(200).json({
     message: "GET ALL request received",
   });
@@ -34,7 +41,6 @@ app.post("/api/add-post", (req, res) => {
 });
 
 app.use(errorHandler);
-app.use(notFoundHandler);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
