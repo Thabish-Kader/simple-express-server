@@ -1,11 +1,14 @@
+const path = require("path");
+
 module.exports = {
   apps: [
     {
       name: "experss-server",
       script: "/Users/thabish/Dev/my-proj/my-server/src/index.ts",
+      script: path.join(__dirname, "/src/index.ts"),
       watch: true, //auto reload TURN false IN PRODUCTION,
-      out_file: "/Users/thabish/Dev/my-proj/my-server/logs/app.log",
-      error_file: "/Users/thabish/Dev/my-proj/my-server/logs/app.error.logs",
+      out_file: path.join(__dirname, "/logs/app.log"),
+      error_file: path.join(__dirname, "/logs/app.error.logs"),
       // instances: -1,
       // exec_mode: "cluster",
       // max_memory_restart: '1G', // restart if memory > 1G
@@ -19,7 +22,7 @@ module.exports = {
     },
     {
       name: "proxy-server",
-      script: "/Users/thabish/Dev/my-proj/vercel-proxy-server/src/index.ts",
+      script: path.join(__dirname, "/../../vercel-proxy-server/src/index.ts"),
       watch: true, //auto reload TURN false IN PRODUCTION
       env: {
         NODE_ENV: "development",

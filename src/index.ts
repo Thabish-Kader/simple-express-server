@@ -8,12 +8,6 @@ app.use(cors());
 app.use(json());
 
 app.get("/", (req, res) => {
-  console.log("Request handled by process:", process.env.NODE_APP_INSTANCE);
-
-  if (process.env.NODE_APP_INSTANCE === "0") {
-    console.log("Executing some operation on process 0 only...");
-  }
-
   console.log(req.url);
   res.status(200).json({
     message: "GET request received in '/' ",
@@ -47,7 +41,6 @@ app.post("/api/add-post", (req, res) => {
 });
 
 app.use(errorHandler);
-
 const server = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
