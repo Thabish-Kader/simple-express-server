@@ -21,7 +21,10 @@ module.exports = {
     },
     {
       name: "proxy-server",
-      script: path.join(__dirname, "/../../vercel-proxy-server/src/index.ts"),
+      script: path.join(
+        __dirname,
+        "/../../my-proj/vercel-proxy-server/src/index.ts"
+      ),
       watch: true, //auto reload TURN false IN PRODUCTION
       env: {
         NODE_ENV: "development",
